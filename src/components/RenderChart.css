@@ -1,0 +1,8 @@
+.container-general{
+    width: 100vw;
+    height: 100vh;
+}
+
+.recharts-layer .recharts-cartesian-axis .recharts-xAxis .xAxis{
+    color: red !important;
+}
