@@ -7,3 +7,25 @@
     height: 100vh;
     background-color: #EAEAEA;
 }
+
+
+.container-buttons{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 220px;
+    padding-right: 220px;
+    padding-top: 20px;
+}
+
+.left{
+    left: 150px;
+    top: 30px;
+    cursor: pointer;
+    border: none;
+}
+.right{
+    right: 150px;
+    top: 30px;
+    cursor: pointer;
+    border: none;
+}

@@ -1,9 +1,10 @@
 const baseUrl = import.meta.env.VITE_API_URL;
 
 
-function getDataDolar() {
+function getDataDolar(range) {
 
 
+    console.log(range)
     // let myHeaders = {
     //     'ambiente': 'dev',
     //     'Accept': 'application/json',
@@ -16,7 +17,7 @@ function getDataDolar() {
         method: 'GET'
     };
 
-    return fetch(`${baseUrl}?$where=vigenciadesde between '2018-01-01T00:00:00.000' and '2022-01-01T00:00:00.000'`, requestOp)
+    return fetch(`${baseUrl}${range}`, requestOp)
 
         .then(res => {
             if (res.status != 200 && res.status != 401) throw new Error('Response is NOT ok')
