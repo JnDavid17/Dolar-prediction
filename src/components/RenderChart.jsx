@@ -19,7 +19,7 @@ function RenderChart() {
   const [prueba, setPrueba] = useState([]);
   const [dates, setDates] = useState([]);
   const [dolarActual, setDolarActual] = useState([]);
-  const { left, right, range } = useContext(ChartContext);
+  const { left, right, range, conservador } = useContext(ChartContext);
 
   let contador = 0;
   let latestYear = 0;
@@ -157,12 +157,13 @@ function RenderChart() {
     
 
     for (let index = 1; index < dolar.length; index++) {
-      let price = dolar[index - 1].valor;
+      let price = conservador ? dolar[index - 1].valor : predictionDolar[index-1];
       let aux = projectStockPrice(price, meanDailyChange, stdDevDailyChange);
       predictionDolar.push(aux);
     }
 
-    if (dolar.length > 0) {
+
+    if (dolar.length > 0 && left === false) {
       let prueba = new Date(dolar[dolar.length - 1].vigenciadesde);
       // Predicción del dolar a futuro
       let futurePrediction = predictionDolar.length;
@@ -181,7 +182,7 @@ function RenderChart() {
       }
     }
 
-    if (predictionDolar.length > 1) {
+    if (predictionDolar.length > 1 && left === false) {
       localStorage.setItem("prediction", JSON.stringify(predictionDolar));
       localStorage.setItem("dates", JSON.stringify(exactDate));
       localStorage.setItem("dolarActual", JSON.stringify(valorDolar));
@@ -260,6 +261,7 @@ function RenderChart() {
   if (left === true) {
     valorDolar = dolar.map((data) => data.valor);
     exactDate = dolar.map((data) => formatDate(data, "historical"));
+    modeloMonteCarlo();
   }
 
   const year = dolar.map((data) => data.vigenciadesde.slice(0, 4));

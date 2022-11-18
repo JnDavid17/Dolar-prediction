@@ -29,3 +29,13 @@
     cursor: pointer;
     border: none;
 }
+
+.conservador, .volatil{
+    background-color: #f219;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    width: 150px;
+    border-radius: 8px;
+    outline: none;
+}

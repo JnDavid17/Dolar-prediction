@@ -4,7 +4,6 @@ const baseUrl = import.meta.env.VITE_API_URL;
 function getDataDolar(range) {
 
 
-    console.log(range)
     // let myHeaders = {
     //     'ambiente': 'dev',
     //     'Accept': 'application/json',
@@ -16,6 +15,8 @@ function getDataDolar(range) {
     let requestOp = {
         method: 'GET'
     };
+
+        
 
     return fetch(`${baseUrl}${range}`, requestOp)
 
